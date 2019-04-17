@@ -1,0 +1,13 @@
+{
+    "id": "flecs.systems.rti.connext",
+    "type": "package",
+    "value": {
+        "author": "Sander Mertens",
+        "description": "RTI Connext implementation of DDS components",
+        "use": [
+            "flecs", 
+            "flecs.components.dds",
+            "rti.connext"
+        ]
+    }
+}
