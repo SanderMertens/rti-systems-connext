@@ -1,5 +1,5 @@
 {
-    "id": "flecs.systems.rti.connext",
+    "id": "rti.systems.connext",
     "type": "package",
     "value": {
         "author": "Sander Mertens",

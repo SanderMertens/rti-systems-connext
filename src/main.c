@@ -104,11 +104,11 @@ void InitRtiConnextReader(ecs_rows_t *rows) {
     }
 }
 
-void FlecsSystemsRtiConnextImport(
+void RtiSystemsConnextImport(
     ecs_world_t *world,
     int flags)
 {
-    ECS_MODULE(world, FlecsSystemsRtiConnext);
+    ECS_MODULE(world, RtiSystemsConnext);
 
     ECS_COMPONENT(world, RtiConnextParticipant);
     ECS_COMPONENT(world, RtiConnextTypeSupport);
