@@ -27,19 +27,18 @@ typedef struct RtiConnextReader {
     DDS_DataReader *dr;
 } RtiConnextReader;
 
-typedef struct EcsSystemsRtiConnextHandles {
+typedef struct FlecsSystemsRtiConnext {
     ECS_DECLARE_COMPONENT(RtiConnextParticipant);
     ECS_DECLARE_COMPONENT(RtiConnextTypeSupport);
     ECS_DECLARE_COMPONENT(RtiConnextWriter);
     ECS_DECLARE_COMPONENT(RtiConnextReader);
-} EcsSystemsRtiConnextHandles;
+} FlecsSystemsRtiConnext;
 
-void EcsSystemsRtiConnext(
+void FlecsSystemsRtiConnextImport(
     ecs_world_t *world,
-    int flags,
-    void *handles_out);
+    int flags);
 
-#define EcsSystemsRtiConnext_ImportHandles(handles)\
+#define FlesSystemsRtiConnextImportHandles(handles)\
     ECS_IMPORT_COMPONENT(handles, RtiConnextParticipant);\
     ECS_IMPORT_COMPONENT(handles, RtiConnextTypeSupport);\
     ECS_IMPORT_COMPONENT(handles, RtiConnextWriter);\

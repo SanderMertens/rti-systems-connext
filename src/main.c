@@ -104,11 +104,12 @@ void InitRtiConnextReader(ecs_rows_t *rows) {
     }
 }
 
-void EcsSystemsRtiConnext(
+void FlecsSystemsRtiConnextImport(
     ecs_world_t *world,
-    int flags,
-    void *handles_out)
+    int flags)
 {
+    ECS_MODULE(world, FlecsSystemsRtiConnext);
+
     ECS_COMPONENT(world, RtiConnextParticipant);
     ECS_COMPONENT(world, RtiConnextTypeSupport);
     ECS_COMPONENT(world, RtiConnextReader);
@@ -126,9 +127,6 @@ void EcsSystemsRtiConnext(
         RtiConnextTypeSupport, 
         DdsReader, 
         !RtiConnextReader);
-
-    EcsSystemsRtiConnextHandles *handles = handles_out;
-    memset(handles, 0, sizeof(EcsSystemsRtiConnextHandles));
 
     ECS_SET_COMPONENT(handles, RtiConnextParticipant);
     ECS_SET_COMPONENT(handles, RtiConnextReader);
