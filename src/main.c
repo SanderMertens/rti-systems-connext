@@ -108,6 +108,8 @@ void RtiSystemsConnextImport(
     ecs_world_t *world,
     int flags)
 {
+    ECS_IMPORT(world, FlecsComponentsDds, 0);
+    
     ECS_MODULE(world, RtiSystemsConnext);
 
     ECS_COMPONENT(world, RtiConnextParticipant);
