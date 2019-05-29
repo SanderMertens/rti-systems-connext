@@ -20,20 +20,18 @@
 /* Generated includes are specific to the bake environment. If a project is not
  * built with bake, it will have to provide alternative methods for including
  * its dependencies. */
-#ifdef __BAKE__
 /* Headers of public dependencies */
-#include <flecs>
-#include <flecs.components.dds>
+#include <flecs.h>
+#include <flecs_components_dds.h>
 
 /* Headers of private dependencies */
 #ifdef RTI_SYSTEMS_CONNEXT_IMPL
 /* No dependencies */
 #endif
-#endif
 
 /* Convenience macro for exporting symbols */
 #ifndef RTI_SYSTEMS_CONNEXT_STATIC
-  #if RTI_SYSTEMS_CONNEXT_IMPL && defined _MSC_VER
+  #if RTI_SYSTEMS_CONNEXT_IMPL && (defined(_MSC_VER) || defined(__MINGW32__))
     #define RTI_SYSTEMS_CONNEXT_EXPORT __declspec(dllexport)
   #elif RTI_SYSTEMS_CONNEXT_IMPL
     #define RTI_SYSTEMS_CONNEXT_EXPORT __attribute__((__visibility__("default")))

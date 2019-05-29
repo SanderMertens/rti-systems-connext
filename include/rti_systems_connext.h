@@ -1,8 +1,8 @@
-#ifndef FLECS_SYSTEMS_RTI_CONNEXT_H
-#define FLECS_SYSTEMS_RTI_CONNEXT_H
+#ifndef RTI_SYSTEMS_RTI_CONNEXT_H
+#define RTI_SYSTEMS_RTI_CONNEXT_H
 
 /* This generated file contains includes for project dependencies */
-#include "bake_config.h"
+#include <rti-systems-connext/bake_config.h>
 #include "ndds_c.h"
 
 typedef struct RtiConnextParticipant {

@@ -1,4 +1,4 @@
-#include <include/connext.h>
+#include <rti_systems_connext.h>
 
 static
 void InitRtiConnextParticipant(ecs_rows_t *rows) {
