@@ -13,10 +13,12 @@ void InitRtiConnextParticipant(ecs_rows_t *rows) {
             DDS_STATUS_MASK_NONE);
 
         if (!dp) { 
-            fprintf(stderr, "failed to create participant for id %d\n", 
+            ecs_os_err("failed to create participant for domain %d", 
                 participant[i].domain_id); 
             continue; 
         }
+
+        ecs_os_log("participant created for domain %d", participant[i].domain_id);
 
         ecs_set(rows->world, rows->entities[i], RtiConnextParticipant, {dp});
     }
@@ -24,7 +26,7 @@ void InitRtiConnextParticipant(ecs_rows_t *rows) {
 
 static
 void InitRtiConnextWriter(ecs_rows_t *rows) {
-    ECS_SHARED(rows, RtiConnextParticipant, participant, 1);
+    ECS_COLUMN(rows, RtiConnextParticipant, participant, 1);
     ECS_COLUMN(rows, RtiConnextTypeSupport, type_support, 2);
     ECS_COLUMN(rows, DdsWriter, writer, 3);
     ECS_COLUMN_COMPONENT(rows, RtiConnextWriter, 4);
@@ -55,6 +57,8 @@ void InitRtiConnextWriter(ecs_rows_t *rows) {
             break; 
         };
 
+        ecs_os_log("writer created for topic %s", writer[i].topic_name);
+
         ecs_set(rows->world, rows->entities[i], RtiConnextWriter, {
             .pub = pub,
             .topic = topic,
@@ -65,7 +69,7 @@ void InitRtiConnextWriter(ecs_rows_t *rows) {
 
 static
 void InitRtiConnextReader(ecs_rows_t *rows) {
-    ECS_SHARED(rows, RtiConnextParticipant, participant, 1);
+    ECS_COLUMN(rows, RtiConnextParticipant, participant, 1);
     ECS_COLUMN(rows, RtiConnextTypeSupport, type_support, 2);
     ECS_COLUMN(rows, DdsReader, reader, 3);
     ECS_COLUMN_COMPONENT(rows, RtiConnextReader, 4);
@@ -95,6 +99,8 @@ void InitRtiConnextReader(ecs_rows_t *rows) {
             fprintf(stderr, "failed to create reader\n"); 
             break; 
         };
+
+        ecs_os_log("reader created for topic %s", reader[i].topic_name);
 
         ecs_set(rows->world, rows->entities[i], RtiConnextReader, {
             .sub = sub,
